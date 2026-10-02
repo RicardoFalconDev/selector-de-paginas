@@ -14,7 +14,7 @@ export default function Sidebar({ currentPage, onSelectPage }) {
 
   return (
     <aside className="sidebar" aria-label="Páginas del documento">
-      <p className="sidebar__count">{PAGES.length} paginas</p>
+      <p className="sidebar__count">{PAGES.length} páginas</p>
       <div className="sidebar__list" ref={listRef}>
         {PAGES.map(({ number: n }) => {
           const active = n === currentPage;

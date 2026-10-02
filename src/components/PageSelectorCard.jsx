@@ -23,7 +23,7 @@ export default function PageSelectorCard({
     <div className="ps-card">
       <button ref={openerRef} className="ps-card__open" type="button" onClick={onOpen}>
         <img src={asset('ic-grid.svg')} alt="" />
-        Abrir selector de paginas
+        Abrir selector de páginas
       </button>
 
       {pages.length > 0 && (

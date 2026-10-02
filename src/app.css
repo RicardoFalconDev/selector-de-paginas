@@ -299,6 +299,7 @@ img {
 }
 
 .viewer__stage {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
 }
@@ -311,6 +312,7 @@ img {
   border-radius: 1.553px;
   background: var(--white);
   overflow: hidden;
+  flex-shrink: 0;
   transform-origin: top center;
   transition: transform 0.15s ease;
 }

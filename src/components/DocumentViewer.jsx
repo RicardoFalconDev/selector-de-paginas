@@ -1,16 +1,46 @@
 import { asset } from '../asset.js';
 
+import { useEffect, useRef, useState } from 'react';
+
 const ZOOM_STEP = 10;
 const ZOOM_MIN = 50;
 const ZOOM_MAX = 200;
 
+// Tamaño de la hoja en Figma y espacio vertical que ocupa el resto del visor.
+const DOC_WIDTH = 462;
+const DOC_HEIGHT = 653.788;
+const WORKSPACE_PADDING_Y = 48;
+const VIEWER_GAP = 16.604;
+const ZOOMBAR_HEIGHT = 48;
+
+/** Escala con la que la hoja ocupa todo el alto disponible del área de trabajo (zoom 100%). */
+function useFitScale(ref) {
+  const [fit, setFit] = useState(1);
+
+  useEffect(() => {
+    const container = ref.current?.parentElement;
+    if (!container) return undefined;
+    const update = () => {
+      const available = container.clientHeight - WORKSPACE_PADDING_Y - VIEWER_GAP - ZOOMBAR_HEIGHT;
+      setFit(Math.max(0.3, available / DOC_HEIGHT));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [ref]);
+
+  return fit;
+}
+
 /** Documento con la estampa de firma y la barra de zoom/paginación. */
 export default function DocumentViewer({ zoom, onZoom, currentPage, totalPages, onSelectPage }) {
-  const scale = zoom / 100;
+  const viewerRef = useRef(null);
+  const scale = useFitScale(viewerRef) * (zoom / 100);
 
   return (
-    <section className="viewer" aria-label="Vista previa del documento">
-      <div className="viewer__stage" style={{ height: 653.788 * scale }}>
+    <section className="viewer" ref={viewerRef} aria-label="Vista previa del documento">
+      <div className="viewer__stage" style={{ width: DOC_WIDTH * scale, height: DOC_HEIGHT * scale }}>
         <div className="doc" style={{ transform: `scale(${scale})` }}>
           <img className="doc__img" src={asset('doc-b.png')} alt="Autorización para retiro de pertenencias" />
           <div className="stamp" aria-label="Firma">

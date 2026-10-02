@@ -1,3 +1,5 @@
+import { asset } from '../asset.js';
+
 const ZOOM_STEP = 10;
 const ZOOM_MIN = 50;
 const ZOOM_MAX = 200;
@@ -10,7 +12,7 @@ export default function DocumentViewer({ zoom, onZoom, currentPage, totalPages, 
     <section className="viewer" aria-label="Vista previa del documento">
       <div className="viewer__stage" style={{ height: 653.788 * scale }}>
         <div className="doc" style={{ transform: `scale(${scale})` }}>
-          <img className="doc__img" src="/assets/doc-b.png" alt="Autorización para retiro de pertenencias" />
+          <img className="doc__img" src={asset('doc-b.png')} alt="Autorización para retiro de pertenencias" />
           <div className="stamp" aria-label="Firma">
             <div className="stamp__box">
               <p className="stamp__title">Firmado digitalmente por:</p>
@@ -38,7 +40,7 @@ export default function DocumentViewer({ zoom, onZoom, currentPage, totalPages, 
             disabled={zoom <= ZOOM_MIN}
             onClick={() => onZoom(Math.max(ZOOM_MIN, zoom - ZOOM_STEP))}
           >
-            <img src="/assets/zoom-remove.svg" alt="" />
+            <img src={asset('zoom-remove.svg')} alt="" />
           </button>
           <span className="zoombar__value zoombar__value--zoom">{zoom}%</span>
           <button
@@ -48,7 +50,7 @@ export default function DocumentViewer({ zoom, onZoom, currentPage, totalPages, 
             disabled={zoom >= ZOOM_MAX}
             onClick={() => onZoom(Math.min(ZOOM_MAX, zoom + ZOOM_STEP))}
           >
-            <img src="/assets/zoom-add.svg" alt="" />
+            <img src={asset('zoom-add.svg')} alt="" />
           </button>
         </div>
         <span className="zoombar__divider" />
@@ -60,7 +62,7 @@ export default function DocumentViewer({ zoom, onZoom, currentPage, totalPages, 
             disabled={currentPage <= 1}
             onClick={() => onSelectPage(currentPage - 1)}
           >
-            <img src="/assets/arrow-left.svg" alt="" />
+            <img src={asset('arrow-left.svg')} alt="" />
           </button>
           <span className="zoombar__value">
             <b>{currentPage}</b>/{totalPages}
@@ -72,7 +74,7 @@ export default function DocumentViewer({ zoom, onZoom, currentPage, totalPages, 
             disabled={currentPage >= totalPages}
             onClick={() => onSelectPage(currentPage + 1)}
           >
-            <img src="/assets/arrow-right.svg" alt="" />
+            <img src={asset('arrow-right.svg')} alt="" />
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import PageSelectorCard from './PageSelectorCard.jsx';
+import { asset } from '../asset.js';
 
 const ITEMS_BEFORE = [{ id: 'size', label: 'Tamaño de Firma', icon: 'ic-size.svg' }];
 const ITEMS_AFTER = [
@@ -12,10 +13,10 @@ function MenuItem({ label, icon }) {
   return (
     <button className="menu-item" type="button" aria-expanded={false}>
       <span className="menu-item__content">
-        <img className="menu-item__icon" src={`/assets/${icon}`} alt="" />
+        <img className="menu-item__icon" src={asset(icon)} alt="" />
         <span className="menu-item__label">{label}</span>
       </span>
-      <img className="menu-item__caret" src="/assets/caret-down.svg" alt="" />
+      <img className="menu-item__caret" src={asset('caret-down.svg')} alt="" />
     </button>
   );
 }
@@ -40,10 +41,10 @@ export default function ConfigPanel({ pagesOpen, onTogglePages, ...selectorProps
               onClick={onTogglePages}
             >
               <span className="menu-item__content">
-                <img className="menu-item__icon" src="/assets/ic-pages.svg" alt="" />
+                <img className="menu-item__icon" src={asset('ic-pages.svg')} alt="" />
                 <span className="menu-item__label">Páginas a firmar</span>
               </span>
-              <img className="accordion__caret" src="/assets/caret-up.svg" alt="" />
+              <img className="accordion__caret" src={asset('caret-up.svg')} alt="" />
             </button>
             <div className="accordion__body" id="pages-body">
               <PageSelectorCard {...selectorProps} />
@@ -52,10 +53,10 @@ export default function ConfigPanel({ pagesOpen, onTogglePages, ...selectorProps
         ) : (
           <button className="menu-item" type="button" aria-expanded="false" onClick={onTogglePages}>
             <span className="menu-item__content">
-              <img className="menu-item__icon" src="/assets/ic-pages.svg" alt="" />
+              <img className="menu-item__icon" src={asset('ic-pages.svg')} alt="" />
               <span className="menu-item__label">Páginas a firmar</span>
             </span>
-            <img className="menu-item__caret" src="/assets/caret-down.svg" alt="" />
+            <img className="menu-item__caret" src={asset('caret-down.svg')} alt="" />
           </button>
         )}
 

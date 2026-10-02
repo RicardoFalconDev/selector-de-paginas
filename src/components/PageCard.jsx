@@ -1,3 +1,5 @@
+import { asset } from '../asset.js';
+
 /** Miniatura seleccionable del modal "Elegir páginas". */
 export default function PageCard({ page, selected, onToggle }) {
   return (
@@ -13,7 +15,7 @@ export default function PageCard({ page, selected, onToggle }) {
         <span className="page-card__sheet">
           <img className="page-card__img" src={page.thumb} alt="" loading="lazy" />
         </span>
-        <span className="page-card__check">{selected && <img src="/assets/check.svg" alt="" />}</span>
+        <span className="page-card__check">{selected && <img src={asset('check.svg')} alt="" />}</span>
       </span>
       <span className="page-card__label">Pág {page.number}</span>
     </button>

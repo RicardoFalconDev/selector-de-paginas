@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PageChip from './PageChip.jsx';
 import { MAX_VISIBLE_CHIPS } from '../data.js';
+import { asset } from '../asset.js';
 
 /** Contenido del acordeón "Páginas a firmar": abre el modal y resume la selección. */
 export default function PageSelectorCard({ selected, onOpen, onRemove, onClear, openerRef }) {
@@ -12,7 +13,7 @@ export default function PageSelectorCard({ selected, onOpen, onRemove, onClear, 
   return (
     <div className="ps-card">
       <button ref={openerRef} className="ps-card__open" type="button" onClick={onOpen}>
-        <img src="/assets/ic-grid.svg" alt="" />
+        <img src={asset('ic-grid.svg')} alt="" />
         Abrir selector de paginas
       </button>
 

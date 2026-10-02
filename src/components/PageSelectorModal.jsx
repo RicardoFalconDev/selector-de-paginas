@@ -3,6 +3,7 @@ import Checkbox from './Checkbox.jsx';
 import PageCard from './PageCard.jsx';
 import CustomScrollbar from './CustomScrollbar.jsx';
 import { PAGES, TOTAL_PAGES } from '../data.js';
+import { asset } from '../asset.js';
 
 const FOCUSABLE = 'button:not([disabled]), [href], input, [tabindex]:not([tabindex="-1"])';
 
@@ -73,7 +74,7 @@ export default function PageSelectorModal({ initialSelected, onCancel, onConfirm
             </p>
           </div>
           <button className="modal__close" type="button" aria-label="Cerrar" onClick={onCancel}>
-            <img src="/assets/modal-close.svg" alt="" />
+            <img src={asset('modal-close.svg')} alt="" />
           </button>
         </div>
 

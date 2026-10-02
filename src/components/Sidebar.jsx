@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { PAGES } from '../data.js';
+import { asset } from '../asset.js';
 
 /** Miniaturas del documento abierto en el visor. */
 export default function Sidebar({ currentPage, onSelectPage }) {
@@ -27,7 +28,7 @@ export default function Sidebar({ currentPage, onSelectPage }) {
               aria-label={`Página ${n}`}
             >
               <span className="thumb__page">
-                <img src="/assets/thumb-b.png" alt="" />
+                <img src={asset('thumb-b.png')} alt="" />
               </span>
               <span className="thumb__num">{n}</span>
             </button>

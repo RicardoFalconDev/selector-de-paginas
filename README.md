@@ -1,5 +1,7 @@
 # Selector de páginas — FID by Lakaut
 
+**Demo:** https://ricardofalcondev.github.io/selector-de-paginas/
+
 Prototipo funcional del flujo **Configurar firma → Páginas a firmar**, construido fiel al diseño de Figma.
 
 - Modal "Elegir páginas" con selección individual, "Seleccionar todas" y contador en vivo.

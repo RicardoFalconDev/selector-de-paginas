@@ -1,10 +1,19 @@
 import { useState } from 'react';
+import Checkbox from './Checkbox.jsx';
 import PageChip from './PageChip.jsx';
 import { MAX_VISIBLE_CHIPS } from '../data.js';
 import { asset } from '../asset.js';
 
 /** Contenido del acordeón "Páginas a firmar": abre el modal y resume la selección. */
-export default function PageSelectorCard({ selected, onOpen, onRemove, onClear, openerRef }) {
+export default function PageSelectorCard({
+  selected,
+  onOpen,
+  onRemove,
+  onClear,
+  openerRef,
+  samePosition,
+  onSamePositionChange,
+}) {
   const [expanded, setExpanded] = useState(false);
   const pages = [...selected].sort((a, b) => a - b);
   const visible = expanded ? pages : pages.slice(0, MAX_VISIBLE_CHIPS);
@@ -49,6 +58,20 @@ export default function PageSelectorCard({ selected, onOpen, onRemove, onClear, 
               </button>
             )}
           </div>
+        </div>
+      )}
+
+      {pages.length > 0 && (
+        <div className="same-position">
+          <Checkbox
+            id="same-position"
+            labelledBy="same-position-label"
+            checked={samePosition}
+            onChange={onSamePositionChange}
+          />
+          <label className="same-position__label" id="same-position-label" htmlFor="same-position">
+            Misma posición en todas las páginas
+          </label>
         </div>
       )}
     </div>

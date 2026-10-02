@@ -12,6 +12,7 @@ export default function App() {
   const [pagesOpen, setPagesOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [zoom, setZoom] = useState(100);
+  const [samePosition, setSamePosition] = useState(true);
   const openerRef = useRef(null);
 
   const closeModal = useCallback(() => {
@@ -55,6 +56,8 @@ export default function App() {
             onOpen={() => setModalOpen(true)}
             onRemove={removePage}
             onClear={() => setSelected(new Set())}
+            samePosition={samePosition}
+            onSamePositionChange={setSamePosition}
           />
         </main>
       </div>

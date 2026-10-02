@@ -636,11 +636,28 @@ img {
 }
 
 .chips {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
   align-items: center;
   gap: 4px;
+}
+
+.same-position {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--stroke-default);
+}
+
+.same-position__label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.24px;
+  color: var(--text-subtle);
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .chip {
